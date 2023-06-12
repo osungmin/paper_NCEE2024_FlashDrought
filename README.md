@@ -4,7 +4,7 @@ Paper codes for *"Divergent ecosystem responses to flash droughts across climate
 
 1. See https://github.com/osungmin/Flash_Drought.git for identification of flash drought events
 
-Conda environment can be created from fd_ecosystem.yml
+  - Conda environment can be created from fd_ecosystem.yml
 ```
 $ conda env create -f fd_ecosystem.yml
 ```
