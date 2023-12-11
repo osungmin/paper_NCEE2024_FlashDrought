@@ -201,7 +201,7 @@ def main():
     print("\n >> plotting the freq map (upper)")
     ax = fig.add_subplot(gs[0])
 
-    fpath='../map_freq.dat'
+    fpath='./map_freq.dat'
     with open(fpath, 'rb') as f:
         pltdat = np.load(f)[:,:]
 
