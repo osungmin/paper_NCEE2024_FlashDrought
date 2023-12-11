@@ -4,7 +4,7 @@ import numpy as np
 from netCDF4 import Dataset
 print ("modules imported")
 
-def nc_anom(var, yrs, detrend=False):
+def nc_anom(var, yrs):
    ###
    ncpath="your_path_to_netcdf_files"
    outpath="your_path_to_output_directory"
@@ -78,7 +78,7 @@ var='swvl30' #name of variable (e.g. ERA5 soil moisture)
 ######
 
 print(" **** ", var)
-nc_anom(var, yrs, opt=opt, detrend=False)
+nc_anom(var, yrs)
 print("End.")
 
 
