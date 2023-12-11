@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import numpy as np
 import pandas as pd
+import statistics
 
 import matplotlib as mpl
 import matplotlib.pylab as plt
