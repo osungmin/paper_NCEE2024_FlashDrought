@@ -97,7 +97,7 @@ def generateMapData2(df):
         i+=1
 
     print(".... saving")
-    outfpath='../_pltdats/map.arid_tree.dat'
+    outfpath='./map.arid_tree.dat'
     np.save(open(outfpath, 'wb'), out, allow_pickle=False)
     print(" >> saved:", outfpath)
 
@@ -211,11 +211,11 @@ def main():
     print(" \n >> plotting the regime map (bottom)")
     ax = fig.add_subplot(gs[1])
 
-    fpath='../_pltdats/map.arid_tree.dat'
+    fpath='./map.arid_tree.dat'
     with open(fpath, 'rb') as f:
         pltdat = np.load(f)[:,:]
     
-    inset_pltdat =pd.read_csv("../_pltdats/map.imshow.arid_tree.dat",
+    inset_pltdat =pd.read_csv("./map.imshow.arid_tree.dat",
                                header=0, index_col=0, na_values=-9999)
     plt_map_regime(ax, pltdat, inset_pltdat)
 
