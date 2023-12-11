@@ -10,7 +10,11 @@ $ conda env create -f fd_ecosystem.yml
 ```
 
 2. Python scripts to prepare anomalies of considered variables: /prep_anomly (Python v3)
-  - Input data in netcdf needs to be ready; we used ERA5 for meteorological data and MODIS/FLUXCOM data for ecological variables. 
+  - Input data in netcdf needs to be ready; we used ERA5 for meteorological data and MODIS, FLUXCOM, GOSIF data for ecological variables.
+    - ERA5 meteorological data: https://cds.climate.copernicus.eu/
+    - MODIS NDVI: https://lpdaac.usgs.gov/products/mod15a2hv006/
+    - FLUXCOM GPP: https://www.fluxcom.org
+    - GOSIF SIF: https://globalecology.unh.edu/data/GOSIF.html
   - prep_anom.py
   
 3. Python scripts to create paper figures: /paper_scripts (Python v3)
