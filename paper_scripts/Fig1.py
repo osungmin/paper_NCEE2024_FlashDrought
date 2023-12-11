@@ -4,13 +4,9 @@ import pandas as pd
 
 import matplotlib as mpl
 import matplotlib.pylab as plt
-import matplotlib.colors as mcolors
-import matplotlib.patches as mpatches
-import matplotlib.transforms as mtransforms
 from matplotlib.colors import ListedColormap
 import matplotlib.gridspec as gridspec
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
-from mpl_toolkits.axes_grid1 import make_axes_locatable
 from mpl_toolkits.basemap import Basemap
 
 import warnings
