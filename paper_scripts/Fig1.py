@@ -16,7 +16,7 @@ print ("modules imported")
 def load_fd():
     #load .csv file with extracted meteo/eco variables during flash drought events
     #each raw corresponds each flash drought event
-    flash = pd.read_csv("./example.csv",
+    flash = pd.read_csv("./example_fd.csv",
                         header=0, index_col=0,
                         na_values=-9999.)
     flash['grid']=flash['p'].astype('str')+'_'+flash['q'].astype(str)
