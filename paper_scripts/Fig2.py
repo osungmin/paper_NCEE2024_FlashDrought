@@ -175,8 +175,13 @@ def main():
     plt_map(ax_map, pltdat, m)
 
     ##### TEMPORAL PLOTS
-    load=load_fd_vars()
+    #open here to create plot data
+    #pltdat=load_fd_vars()
 
+    fpath='./map_subregions.dat' 
+    with open(fpath, 'rb') as f:
+        pltdat = np.load(f)[:,:]
+    
     ##### sub regions
     rnames=['ENA','CEU','SAS','EAS','NWS','SES','WAF','EAU']
     rareas=[[-85,-75,30,45],[0,20,45,60],[70,90,8,30],[100,120,20,35],
@@ -203,10 +208,17 @@ def main():
         else: yaxis_opt=False
 
         plt.text(-5, 1.2, rtexts[i]+') '+rnames[i], weight='bold', fontsize=10)
-        soilm,soilm_up,soilm_bt,eco,eco_up,eco_bt=plt_subset(load.copy(), [lonmin,lonmax,latmin,latmax])
+        #open here to compute temporal variations of soil moisture and eco variables
+        #soilm,soilm_up,soilm_bt,eco,eco_up,eco_bt=plt_subset(load.copy(), [lonmin,lonmax,latmin,latmax])
+        soilm=pltdat.loc[rtexts[i],'soilm']
+        soilm_up, soilm_bt=pltdat.loc[rtexts[i],'soilm_up'], pltdat.loc[rtexts[i],'soilm_bt']
+        eco=pltdat.loc[rtexts[i],'eco']
+        eco_up, eco_bt=pltdat.loc[rtexts[i],'eco_up'], pltdat.loc[rtexts[i],'eco_bt']
         plt_lines(ax, soilm,soilm_up,soilm_bt,eco,eco_up,eco_bt, yaxis_opt=yaxis_opt)
-        arid, tree=comp_meteo(load.copy(), [lonmin,lonmax,latmin,latmax])
-
+        #open here to compute spatially-averaged dryness index and tree dominance values
+        #arid, tree=comp_meteo(load.copy(), [lonmin,lonmax,latmin,latmax])
+        arid, tree=pltdat.loc[rtexts[i],'arid'], pltdat.loc[rtexts[i],'tree']
+        
     #legend
     legend_elements=[Line2D([0],[0], linestyle='-', color="k", label='Soil Moist.'),
              Line2D([0],[0], marker=None, linestyle='-', color="g", label='LAI')]
