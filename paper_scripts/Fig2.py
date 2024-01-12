@@ -15,6 +15,14 @@ warnings.filterwarnings("ignore")
 print ("modules imported")
 
 def load_fd_vars():
+    warning="""
+     ***
+     this is to generate plot data for Fig. 2 using rawdata.csv (sample data)
+     final plot data for the figure is provided under /_pltdats
+     ***
+    """
+    print(warning)
+
     #load .csv file with extracted meteo/eco variables during flash drought events
     load = pd.read_csv("./example_fd.csv",
                         header=0, index_col=0,
@@ -59,9 +67,6 @@ def plt_basemap(ax):
 def plt_map(ax, pltdat, m, opt=None):
 
     lons, lats = np.arange(-179.875, 180.1, 0.25), np.arange(89.875, -90., -0.25)
-    if pltdat.shape[0]!=len(lats):stop
-    if pltdat.shape[1]!=len(lons):stop
-
     lon, lat = np.meshgrid(lons,lats)
     xi, yi = m(lon, lat)
 
@@ -132,6 +137,7 @@ def plt_lines(ax,soilm,soilm_up,soilm_bt,eco,eco_up,eco_bt,yaxis_opt=False):
     plt.xlabel('Time [pentad]', labelpad=5, fontsize=9)
     plt.xticks(np.arange(0,20+1,5),['drought\nstarts',5,10,15,20], fontsize=7)
     plt.xlim(-5,20)
+    
     if yaxis_opt:
         plt.ylabel('Norm. Anomaly', labelpad=10, fontsize=9)
         plt.yticks(np.arange(-2,1+1,1), fontsize=7)
@@ -176,7 +182,6 @@ def main():
     rareas=[[-85,-75,30,45],[0,20,45,60],[70,90,8,30],[100,120,20,35],
             [-85,-65,-5,5],[-60,-40,-30,-15],[10,25,-8,10],[145,155,-30,-20]]
     rtexts=['a','b','c','d','e','f','g','h','i']
-    [1,2]
 
     for i in range(8):
         print(" >>>>> ", rnames[i])
@@ -211,9 +216,9 @@ def main():
     legend.get_frame().set_alpha(0.3)
 
 
-##############################
+##### main ######################################
 main()
-##############################
+#################################################
 
 plt.show()
 print ("End.")
