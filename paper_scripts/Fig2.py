@@ -179,10 +179,6 @@ def main():
     #pltdat=load_fd_vars()
     pltdat= pd.read_csv("./map_subregions.dat",
                         header=0, index_col=0)
-
-    fpath='./map_subregions.dat' 
-    with open(fpath, 'rb') as f:
-        pltdat = np.load(f)[:,:]
     
     ##### sub regions
     rnames=['ENA','CEU','SAS','EAS','NWS','SES','WAF','EAU']
