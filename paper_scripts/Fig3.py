@@ -14,8 +14,16 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 print ("modules imported")
 
 def load_fd():
+    warning="""
+     ***
+     this is to generate plot data for Fig. 3 using rawdata.csv (sample data)
+     final plot data for the figure is provided under /_pltdats
+     ***
+    """
+    print(warning)
+    
     #load .csv file with extracted meteo/eco variables during flash drought events
-    load = pd.read_csv("./example_fd.csv",
+    load = pd.read_csv("./rawdata.csv",
                         header=0, index_col=0,
                         na_values=-9999.)
     return(load.dropna(subset=['arid','tree','lai.modis0']))
@@ -122,8 +130,9 @@ def add_regime(ax):
     ax.add_patch(line)
 
 
-####################
-load=load_fd()
+##### main ######################################
+#load=load_fd()
+#################################################
 
 ### prepare figure setting
 fig= plt.figure(figsize=(6, 2.5), facecolor='w', edgecolor='k')
@@ -139,17 +148,18 @@ for i in range(2):
     add_regime(ax)
 
     if i==0:
-        opt='.timing'
+        opt='timing'
         vmin, vmax= 0, 8
     if i==1:
-        opt='.intensity'
+        opt='intensity'
         vmin, vmax= -.8, .2
 
     ### prepare plot data
-    create_imshow(load, targetvar='lai.modis', opt=opt)
+    #open here to create plot data
+    #create_imshow(load, targetvar='lai.modis', opt=opt)
 
     ### load plot data
-    plot=pd.read_csv('./imshow'+opt+'.dat',
+    plot=pd.read_csv('./imshow_'+opt+'.dat',
                     header=0, index_col=0, na_values=-9999)
     plot=plot.iloc[1:,:]
     if i==0: plot=plot/10
@@ -159,7 +169,7 @@ for i in range(2):
                   interpolation='none', extent=[0,4,0,4])
 
     plt.xticks(np.arange(0,4+1,1), ["0","0.5","1","2","4"], fontsize=8)
-    plt.xlabel('Aridity [-]', fontsize=9)
+    plt.xlabel('DryIdx [-]', fontsize=9)
     if i==0:
         plt.ylabel('Tree dominance [-]', fontsize=9)
         plt.yticks(np.arange(0,4+1,1), ["0",".25",".50",".75","1"], fontsize=8)
