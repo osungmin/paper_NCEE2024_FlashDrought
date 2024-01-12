@@ -14,9 +14,19 @@ warnings.filterwarnings("ignore")
 print ("modules imported")
 
 def load_fd():
-    #load .csv file with extracted meteo/eco variables during flash drought events
+    
+    warning="""
+     ***
+     this is to generate plot data for Fig. 1 using rawdata.csv (sample data)
+     final plot data for the figure is provided under /_pltdats
+     ***
+    """
+    print(warning)
+
+    #load rawdata.csv file with extracted meteo and eco variables during flash drought events
     #each raw corresponds each flash drought event
-    flash = pd.read_csv("./example_fd.csv",
+    #it is a sample data!!
+    flash = pd.read_csv("./rawdata.csv",
                         header=0, index_col=0,
                         na_values=-9999.)
     flash['grid']=flash['p'].astype('str')+'_'+flash['q'].astype(str)
@@ -81,7 +91,7 @@ def generateMapData2(df):
                  df['dum'][(df['arid']>=arids[i])&(df['arid']<arids[i+1])&(df['tree']>=trees[j])&(df['tree']<trees[j+1])] = np.nan
 
     print(" - data values replaced", check, "df len", len(df))
-    df_vals.to_csv("./map.imshow.arid_tree.dat")
+    df_vals.to_csv("./imshow_arid_tree.dat")
 
     ##### to make a global map with the climate-veg regime info
     print("\n >> assign arid-tree value to each grid pixel")
@@ -97,7 +107,7 @@ def generateMapData2(df):
         i+=1
 
     print(".... saving")
-    outfpath='./map.arid_tree.dat'
+    outfpath='./map_arid_tree.dat'
     np.save(open(outfpath, 'wb'), out, allow_pickle=False)
     print(" >> saved:", outfpath)
 
@@ -183,7 +193,7 @@ def plt_map_regime(ax, pltdat, inset_pltdat):
     im=plt.imshow(inset_pltdat, cmap=cm, interpolation='none', vmin=-1, vmax=15,
                   extent=[0,4,0,4])
 
-    plt.xlabel("Aridity", fontsize=8, labelpad=2)
+    plt.xlabel("DryIdx", fontsize=8, labelpad=2)
     plt.xticks(range(5),["0","0.5","1","2","4"], fontsize=7)
     plt.ylabel("Tree dominance", fontsize=8, labelpad=1)
     plt.yticks(range(5),["0",".25",".50",".75","1"], fontsize=7)
@@ -211,11 +221,11 @@ def main():
     print(" \n >> plotting the regime map (bottom)")
     ax = fig.add_subplot(gs[1])
 
-    fpath='./map.arid_tree.dat'
+    fpath='./map_arid_tree.dat'
     with open(fpath, 'rb') as f:
         pltdat = np.load(f)[:,:]
     
-    inset_pltdat =pd.read_csv("./map.imshow.arid_tree.dat",
+    inset_pltdat =pd.read_csv("./imshow_arid_tree.dat",
                                header=0, index_col=0, na_values=-9999)
     plt_map_regime(ax, pltdat, inset_pltdat)
 
