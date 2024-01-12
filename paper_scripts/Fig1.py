@@ -230,11 +230,14 @@ def main():
     plt_map_regime(ax, pltdat, inset_pltdat)
 
 
-##### generating map data #########################
+##### generating map data #######################
 generateMapData(load_fd())
 generateMapData2(load_fd())
 #################################################
 
+##### main ######################################
 main()
+#################################################
+
 plt.show()
 print ("End.")
