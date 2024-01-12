@@ -21,8 +21,8 @@ $ conda env create -f fd_ecosystem.yml
   - extract_vars.py: to extract the anomalies at the days of flash drought events. 
   
 3. Python scripts to create paper figures: /paper_scripts (Python v3)
-   
-  - unzip exdata.zip in the same directory; this is an example data with soil moisture and LAI anomalies during flash drought events.
+
   - fig1.py, fig2.py, and fig3.py: python codes for the main figures.
-  - /plt_data: final data for the main manuscript figures. 
+  - unzip rawdata.zip in the same directory; this is an example raw research data with soil moisture and LAI anomalies during flash drought events.
+  - Note that the final data for the main manuscript figures are under /pltdata
 
