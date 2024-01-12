@@ -23,6 +23,6 @@ $ conda env create -f fd_ecosystem.yml
 3. Python scripts to create paper figures: /paper_scripts (Python v3)
 
   - fig1.py, fig2.py, and fig3.py: python codes for the main figures.
-  - unzip rawdata.zip in the same directory; this is an example raw research data with soil moisture and LAI anomalies during flash drought events.
-  - Note that the final data for the main manuscript figures are under /pltdata
+  - rawdata.zip; example raw research data containing the list of soil moisture and LAI anomalies during flash droughts.
+  - pltdats.zip; final data for the main manuscript figures. 
 
