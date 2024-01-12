@@ -231,8 +231,8 @@ def main():
 
 
 ##### generating map data #######################
-generateMapData(load_fd())
-generateMapData2(load_fd())
+#generateMapData(load_fd())
+#generateMapData2(load_fd())
 #################################################
 
 ##### main ######################################
