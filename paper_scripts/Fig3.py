@@ -36,9 +36,9 @@ def truncate_colormap(cmap, minval=0.0, maxval=1.0, n=100):
 
 def custom_cmap(opt):
 
-    if opt=='.timing':
+    if opt=='timing':
         cmap = truncate_colormap(plt.cm.YlOrRd_r, 0.0, .7)
-    if opt=='.intensity':
+    if opt=='intensity':
         colors01 = truncate_colormap(plt.cm.BrBG, 0., 0.4) #brown
         colors02 = truncate_colormap(plt.cm.BrBG, 0.5, 0.65) #green
         colors1 = colors01(np.linspace(0, 1, 320))
@@ -74,7 +74,7 @@ def create_imshow(df, targetvar=None, opt=None):
                 imsi=df2[[targetvar+str(x) for x in np.arange(-6,20+1,1)]].copy()
                 imsi_med=imsi.loc[:,targetvar+'0':targetvar+'18'].median(skipna=True)
 
-                if opt=='.timing':
+                if opt=='timing':
                     cs = CubicSpline(np.arange(0,18+1,1), imsi_med.values)
                     cubic=cs(np.arange(0,18+1,0.1))
 
@@ -83,7 +83,7 @@ def create_imshow(df, targetvar=None, opt=None):
                     else:
                         df_vals.loc[str(ybins[j]),str(xbins[i])] = np.argmax(cubic<0)
 
-                if opt=='.intensity': df_vals.loc[str(ybins[j]),str(xbins[i])] = np.min(imsi_med)
+                if opt=='intensity': df_vals.loc[str(ybins[j]),str(xbins[i])] = np.min(imsi_med)
                 ##########
 
             else:
