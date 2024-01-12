@@ -177,6 +177,8 @@ def main():
     ##### TEMPORAL PLOTS
     #open here to create plot data
     #pltdat=load_fd_vars()
+    pltdat= pd.read_csv("./map_subregions.dat",
+                        header=0, index_col=0)
 
     fpath='./map_subregions.dat' 
     with open(fpath, 'rb') as f:
@@ -210,14 +212,16 @@ def main():
         plt.text(-5, 1.2, rtexts[i]+') '+rnames[i], weight='bold', fontsize=10)
         #open here to compute temporal variations of soil moisture and eco variables
         #soilm,soilm_up,soilm_bt,eco,eco_up,eco_bt=plt_subset(load.copy(), [lonmin,lonmax,latmin,latmax])
-        soilm=pltdat.loc[rtexts[i],'soilm']
-        soilm_up, soilm_bt=pltdat.loc[rtexts[i],'soilm_up'], pltdat.loc[rtexts[i],'soilm_bt']
-        eco=pltdat.loc[rtexts[i],'eco']
-        eco_up, eco_bt=pltdat.loc[rtexts[i],'eco_up'], pltdat.loc[rtexts[i],'eco_bt']
+        soilm=[pltdat.loc[rnames[i],'soilm'+str(x)] for x in range(26)]
+        soilm_up=[pltdat.loc[rnames[i],'soilm_up'+str(x)] for x in range(26)]
+        soilm_bt=[pltdat.loc[rnames[i],'soilm_bt'+str(x)] for x in range(26)]
+        eco=[pltdat.loc[rnames[i],'eco'+str(x)] for x in range(26)]
+        eco_up=[pltdat.loc[rnames[i],'eco_up'+str(x)] for x in range(26)]
+        eco_bt=[pltdat.loc[rnames[i],'eco_bt'+str(x)] for x in range(26)]
         plt_lines(ax, soilm,soilm_up,soilm_bt,eco,eco_up,eco_bt, yaxis_opt=yaxis_opt)
         #open here to compute spatially-averaged dryness index and tree dominance values
         #arid, tree=comp_meteo(load.copy(), [lonmin,lonmax,latmin,latmax])
-        arid, tree=pltdat.loc[rtexts[i],'arid'], pltdat.loc[rtexts[i],'tree']
+        arid, tree=pltdat.loc[rnames[i],'dryidx'], pltdat.loc[rnames[i],'tree']
         
     #legend
     legend_elements=[Line2D([0],[0], linestyle='-', color="k", label='Soil Moist.'),
