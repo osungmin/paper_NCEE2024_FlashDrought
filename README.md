@@ -24,5 +24,5 @@ $ conda env create -f fd_ecosystem.yml
 
   - fig1.py, fig2.py, and fig3.py: python codes for the main figures.
   - rawdata.zip; example raw research data containing the list of soil moisture and LAI anomalies during flash droughts.
-  - pltdats.zip; processed data for the main manuscript figures. 
+  - pltdats.zip; processed data for the main manuscript figures. ! unzip the data into the same directory where the python scripts are located
 
