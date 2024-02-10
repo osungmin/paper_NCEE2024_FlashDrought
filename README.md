@@ -1,6 +1,6 @@
 # NCEE2024_FlashDrought
 
-Paper codes and plot data for *"Global ecosystem responses to flash droughts are modulated by background climate and vegetation conditions"*, in revision (2024): doi not available yet.
+Paper codes and plot data for *"Global ecosystem responses to flash droughts are modulated by background climate and vegetation conditions"*, Communications Earth & Environment (2024): 10.1038/s43247-024-01247-4.
 
 1. See https://github.com/osungmin/FlashDrought.git for identification of flash drought events
 
